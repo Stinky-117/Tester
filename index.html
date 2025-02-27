@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cutie Patootie</title>
+    <style>
+        body {
+            background-color: #f0e6f5;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 30px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        .styled-text {
+            position: absolute;
+            color: rgb(221, 72, 201);
+            font-family: 'Times New Roman', serif;
+            font-size: 80px;
+            top: 100px;
+            left: 650px;
+        }
+
+        .image-container img {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="styled-text">My Cutie Patootie</h1>
+    
+    <div class="image-container">
+        <img src="IMG_1932.png" alt="Image 1" width="204" height="232" style="top: 300px; left: 650px;">
+        <img src="IMG_1933.png" alt="Image 2" width="204" height="232" style="top: 300px; left: 1060px;">
+        <img src="heart.gif" alt="Heart GIF" width="204" height="232" style="top: 300px; left: 855px;">
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.classList.add("heart");
+            document.body.appendChild(heart);
+
+            // Random position, size, and speed
+            const size = Math.random() * 30 + 20;
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = size + "px";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+
+            // Remove heart after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        // Create a new heart every 300ms
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
